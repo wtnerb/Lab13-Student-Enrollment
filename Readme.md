@@ -7,6 +7,7 @@
 - push to your repository
 - submit a pull request to this repository
 - submit a link to your PR in canvas
+- Include in your readme your Azure deployment link
 
 
 ## Directions
