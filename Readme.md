@@ -1,4 +1,4 @@
-D![cf](http://i.imgur.com/7v5ASc8.png) Lab 13: Student Enrollment
+![cf](http://i.imgur.com/7v5ASc8.png) Lab 13: Student Enrollment
 =====================================
 
 ## To Submit this Assignment
