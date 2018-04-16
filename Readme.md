@@ -1,6 +1,7 @@
+
 # Student Enrollment
 This web app acts like a registrar's view of student enrollment lists.
-
+Deployment lives at: http://studentenrollmentapp.azurewebsites.net/
 ## Overview
 It is assumed any user is authorized and allowed to add/create/delete/modify courses and students at a school. The state of the school is persisted in a database. Student and course data is stored seperately for the sake of memory efficiency. 
 
