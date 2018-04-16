@@ -1,0 +1,26 @@
+﻿@model List<StudentEnrollment.Models.ViewModels.StudentViewModel>
+@{ 
+    Layout = "_Layout";
+}
+<table>
+    <thead>
+        <tr>
+            <td>Student Id</td>
+            <td>Last Name</td>
+            <td>First Name</td>
+            <td>Course</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var thing in Model)
+        {
+            <tr>
+                <td>@thing.ID</td>
+                <td>@thing.LastName</td>
+                <td>@thing.FirstName</td>
+                <td>@thing.Enrolled</td>
+            </tr>
+
+        }
+    </tbody>
+</table>

@@ -1,0 +1,39 @@
+﻿body {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:#2a2a2a;
+    background: linear-gradient(to left, 10% #a3f9eb, 80% #5ac2b1, 10% #a3f9eb);
+    display:grid;
+    grid-template-columns: 150px 650px;
+    grid-template-rows: 150px 800px;
+    grid-template-areas:
+        "corner header"
+        "sidenav main";
+}
+
+h1 {
+    grid-area: header;
+    background-color: rgba(0, 0, 0, 0.20);
+    color: azure;
+    margin:0;
+}
+
+nav {
+    grid-area: sidenav;
+    background-color: black;
+    color:aquamarine;
+    font-size: 16pt;
+    max-width: 200px;
+}
+
+nav ul li :hover{
+    background-color: #ddd;
+}
+main{
+    grid-area: main;
+}
+
+#logo {
+    width:inherit;
+    height:inherit;
+}
+
