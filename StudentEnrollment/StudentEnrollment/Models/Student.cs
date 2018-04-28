@@ -22,6 +22,5 @@ namespace StudentEnrollment.Models
         // Foriegn key.
         [Required]
         public int Enrolled { get; set; }
-
     }
 }

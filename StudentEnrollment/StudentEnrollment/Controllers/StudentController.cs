@@ -48,6 +48,11 @@ namespace StudentEnrollment.Controllers
             }
             return Redirect("~/Err");
         }
+
+        public async Task<int?> GetCourseId(string dept, int num)
+        {
+            return _context.Course.Where(x => x.Level == num).FirstOrDefault(x => x.Department.ToUpper() == dept).ID;
+        }
     }
 
 }
