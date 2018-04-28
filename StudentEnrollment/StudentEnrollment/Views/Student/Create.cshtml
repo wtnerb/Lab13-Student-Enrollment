@@ -1,0 +1,11 @@
+﻿@model Student
+
+<form asp-action="Create">
+    <label asp-for="FirstName">First Name</label>
+    <input asp-for="FirstName" type="text" maxlength="30"/>
+    <label asp-for="LastName">Last Name</label>
+    <input asp-for="LastName" type="text" maxlength="45" />
+    <label asp-for="Enrolled">Enrolled In (ABCD 321)</label>
+    <input asp-for="Enrolled" type="text" maxlength="8" />
+    <input type="submit" value="Finalize new student"/>
+</form>

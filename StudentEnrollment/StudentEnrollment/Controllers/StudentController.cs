@@ -8,14 +8,27 @@ using StudentEnrollment.Models;
 
 namespace StudentEnrollment.Controllers
 {
+    [Route("[controller]/[action]/{id?}")]
     public class StudentController : Controller
     {
         private readonly StudentContext _context;
 
-        // GET: /<controller>/
-        public IActionResult Index()
+        public IActionResult Index( int id)
         {
-            return View();
+            var vm = from s in _context.Student
+                     join c in _context.Course on s.Enrolled equals c.ID
+                     where s.ID == id
+                     select new Models.ViewModels.StudentViewModel
+                     {
+                         ID = s.ID,
+                         LastName = s.LastName,
+                         FirstName = s.FirstName,
+                         Enrolled = c.Department + " " + c.Level
+                     };
+            if (vm.FirstOrDefault() == null)
+                return Redirect("~/Err");
+                                                                  
+            return View(vm.FirstOrDefault());
         }
 
         [HttpPost]
