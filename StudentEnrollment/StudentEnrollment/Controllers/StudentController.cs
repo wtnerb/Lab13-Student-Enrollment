@@ -13,6 +13,11 @@ namespace StudentEnrollment.Controllers
     {
         private readonly StudentContext _context;
 
+        public StudentController (StudentContext ctx)
+        {
+            _context = ctx;
+        }
+
         public IActionResult Index( int id)
         {
             var vm = from s in _context.Student
@@ -23,7 +28,8 @@ namespace StudentEnrollment.Controllers
                          ID = s.ID,
                          LastName = s.LastName,
                          FirstName = s.FirstName,
-                         Enrolled = c.Department + " " + c.Level
+                         CourseDeptartment = c.Department,
+                         CourseNumber = c.Level
                      };
             if (vm.FirstOrDefault() == null)
                 return Redirect("~/Err");

@@ -27,7 +27,8 @@ namespace StudentEnrollment.Controllers
                                ID = s.ID,
                                LastName = s.LastName,
                                FirstName = s.FirstName,
-                               Enrolled = c.Department + " " + c.Level
+                               CourseDeptartment = c.Department,
+                               CourseNumber = c.Level
                            };
                                     
             return View(Students.ToList());
