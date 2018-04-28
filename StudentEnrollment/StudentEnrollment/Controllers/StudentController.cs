@@ -31,6 +31,12 @@ namespace StudentEnrollment.Controllers
             return View(vm.FirstOrDefault());
         }
 
+        [HttpGet]
+        public ViewResult Create()
+        {
+            return View();
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create ([Bind("FirstName,LastName,Enrolled")] Student student)
         {
