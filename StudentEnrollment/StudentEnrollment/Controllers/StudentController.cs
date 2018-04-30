@@ -83,7 +83,7 @@ namespace StudentEnrollment.Controllers
                     _context.Student.Add(newStudent);
                     _context.Course.First(x => x.ID == newStudent.Enrolled).Count++;
                     await _context.SaveChangesAsync();
-                    return CreatedAtAction("Create", newStudent);
+                    return Redirect("Index");
                 }
             }
             return Redirect("~/Err");
@@ -91,9 +91,13 @@ namespace StudentEnrollment.Controllers
 
         public int? GetCourseId(string dept, int num)
         {
-            return _context.Course.Where(x => x.Level == num)
-                                  .FirstOrDefault(x => x.Department.ToUpper() == dept.ToUpper())
-                                  .ID;
+            Course c = _context.Course.Where(x => x.Level == num)
+                                      .FirstOrDefault(x => x.Department.ToUpper() == dept.ToUpper());
+            if (c != null)
+            {
+                return c.ID;
+            }
+            return null;
         }
     }
 }
