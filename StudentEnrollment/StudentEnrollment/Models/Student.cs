@@ -13,7 +13,7 @@ namespace StudentEnrollment.Models
 
         [StringLength(30)]
         [Required]
-        public string FirstName { get; set; } // make this readonly?
+        public string FirstName { get; set; }
 
         [StringLength(45)]
         [Required]

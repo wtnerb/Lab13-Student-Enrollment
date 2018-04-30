@@ -19,8 +19,15 @@
                 <td>@student.LastName</td>
                 <td>@student.FirstName</td>
                 <td>@student.CourseDepartment @student.CourseNumber</td>
+                <td>
+                    <a href="~/Student/Details/@student.ID.ToString()">
+                        Details
+                    </a>
+                </td>
             </tr>
 
         }
     </tbody>
 </table>
+
+<a href="~/Student/Create">Add new student</a>

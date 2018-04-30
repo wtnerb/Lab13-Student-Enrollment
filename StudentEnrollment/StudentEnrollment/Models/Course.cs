@@ -10,7 +10,7 @@ namespace StudentEnrollment.Models
     {
         [Required]
         public int ID { get; set; }
-        
+
         [StringLength(4)]
         [Required]
         public string Department { get; set; }
@@ -23,6 +23,6 @@ namespace StudentEnrollment.Models
 
         public string Description { get; set; }
 
-        public uint Count = 0;
+        public int Count { get; set; }
     }
 }

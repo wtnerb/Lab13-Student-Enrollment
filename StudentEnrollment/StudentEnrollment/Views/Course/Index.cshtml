@@ -20,9 +20,20 @@
                 <td>@course.Department</td>
                 <td>@course.Level</td>
                 <td>@course.Instructor</td>
+                @if(course.Count > 0)
+                {
                 <td>@course.Count</td>
+                }
+                else
+                {
+                    <td><a href="~/Course/Delete/@course.ID">Delete</a></td>
+                }
                 <td>@course.Description</td>
             </tr>
         }
     </tbody>
 </table>
+
+<a href="~/Course/Create">Add New Course</a>
+
+<p>Remeber, the option to delete a course only exists when a course is empty. To remove students, go to the students tab</p>

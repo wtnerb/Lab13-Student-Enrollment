@@ -12,18 +12,19 @@ namespace StudentEnrollment.Controllers
     {
         private readonly StudentContext _context;
 
-        // GET: /<controller>/
         public CourseController (StudentContext context)
         {
             _context = context;
         }
 
+        //Create form
         [HttpGet]
         public ViewResult Create()
         {
             return View();
         }
 
+        //Adds submission from form to the db
         [HttpPost]
         public async Task<IActionResult> Create(Course Course)
         {
@@ -36,16 +37,15 @@ namespace StudentEnrollment.Controllers
             return RedirectToAction("~/Err");
         }
 
+        //main page for course
         public IActionResult Index()
-        {                                 
-            return View(_context.Course.Take(10).ToList());
-        }
-
-        public int? GetCourseId(string dept, int num)
         {
-            return _context.Course.Where(x => x.Level == num)
-                                  .FirstOrDefault(x => x.Department.ToUpper() == dept.ToUpper())
-                                  .ID;
+            List<Course> courseList = _context.Course.Take(10).ToList();
+            foreach(Course c in courseList)
+            {
+                c.Count = _context.Student.Where(x => x.Enrolled == c.ID).Count();
+            }
+            return View(courseList);
         }
     }
 }

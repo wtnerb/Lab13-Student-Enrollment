@@ -21,7 +21,6 @@ namespace StudentEnrollment.Controllers
             _context = ctx;
         }
 
-        [HttpGet]
         public IActionResult Details( int id)
         {
             var vm = from s in _context.Student
@@ -38,9 +37,10 @@ namespace StudentEnrollment.Controllers
             if (vm.FirstOrDefault() == null)
                 return Redirect("~/Err");
                                                                   
-            return View();
+            return View( vm.ToList());
         }
 
+        //Main student page
         [HttpGet]
         public IActionResult Index()
         {
@@ -60,12 +60,14 @@ namespace StudentEnrollment.Controllers
             return View(vm.ToList());
         }
 
+        //Sets up form
         [HttpGet]
         public ViewResult Create()
         {
             return View();
         }
 
+        //Creates from form
         [HttpPost]
         public async Task<IActionResult> Create ([Bind("FirstName,LastName,CourseDepartment,CourseNumber")] StudentViewModel student)
         {
@@ -81,7 +83,6 @@ namespace StudentEnrollment.Controllers
                         Enrolled = (int)courseNum
                     };
                     _context.Student.Add(newStudent);
-                    _context.Course.First(x => x.ID == newStudent.Enrolled).Count++;
                     await _context.SaveChangesAsync();
                     return Redirect("Index");
                 }
@@ -89,6 +90,36 @@ namespace StudentEnrollment.Controllers
             return Redirect("~/Err");
         }
 
+        //Not invoked put method.
+        [HttpPut]
+        public IActionResult Update(Student student)
+        {
+            if (ModelState.IsValid)
+            {
+                if (_context.Student.Any(s => s.ID == student.ID))
+                {
+                    _context.Student.Update(student);
+                    _context.SaveChanges();
+                    return Redirect("~/Student/Index");
+                }
+            }
+            return Redirect("~/Err");
+        }
+
+        //Deletes from database based upon provided id
+        public IActionResult Delete (int id)
+        {
+            if (_context.Student.Any(s => s.ID == id))
+            {
+                Student s = _context.Student.First(student => student.ID == id);
+                _context.Student.Remove(s);
+                _context.SaveChanges();
+                return Redirect("~/Student/Index");
+            }
+            return Redirect("~/Err");
+        }
+
+        //Helper function.
         public int? GetCourseId(string dept, int num)
         {
             Course c = _context.Course.Where(x => x.Level == num)
