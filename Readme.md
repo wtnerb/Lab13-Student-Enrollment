@@ -24,3 +24,4 @@ Last but not least, use the Create, Edit, and Delete options to make your model 
 
 ## Version
 2018-04-15 v0.9 Some styling, database works when manipulated manually, database displays when manipulated to have data, Models are tested. No seeding, No working CRUD, Limited website navigation, Limited styling.
+2018-04-29 v1.0 Bare bones of functionality established.
