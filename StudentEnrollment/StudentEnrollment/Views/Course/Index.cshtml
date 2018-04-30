@@ -1,3 +1,28 @@
-﻿@model StudentEnrollment.Models.Course
+﻿@model List<StudentEnrollment.Models.Course>
 
-This is where I will display course
+@{
+    Layout = "_Layout";
+}
+<table>
+    <thead>
+        <tr>
+            <td>Dept </td>
+            <td>Num</td>
+            <td>Instructor</td>
+            <td>Enrolled</td>
+            <td>Descritpion</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var course in Model)
+        {
+            <tr>
+                <td>@course.Department</td>
+                <td>@course.Level</td>
+                <td>@course.Instructor</td>
+                <td>@course.Count</td>
+                <td>@course.Description</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -44,7 +44,7 @@ namespace StudentEnrollment
            {
                routes.MapRoute(
                    name: "default",
-                   template: "{controller=Home}/{action=Index}/{id?}");
+                   template: "{controller=Course}/{action=Index}/{id?}");
            });
         }
     }

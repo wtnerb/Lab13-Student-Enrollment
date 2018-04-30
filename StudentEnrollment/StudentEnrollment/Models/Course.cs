@@ -23,6 +23,6 @@ namespace StudentEnrollment.Models
 
         public string Description { get; set; }
 
-
+        public uint Count = 0;
     }
 }

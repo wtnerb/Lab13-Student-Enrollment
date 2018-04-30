@@ -19,7 +19,8 @@ namespace StudentEnrollment.Models.ViewModels
 
         [Required]
         [MaxLength(4)]
-        public string CourseDeptartment { get; set; }
+        [MinLength(3)]
+        public string CourseDepartment { get; set; }
 
         [Required]
         [Range(100, 999)]

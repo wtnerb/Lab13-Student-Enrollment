@@ -1,6 +1,26 @@
-﻿@model StudentEnrollment.Models.ViewModels.StudentViewModel
-@{ 
+﻿@model List<StudentEnrollment.Models.ViewModels.StudentViewModel>
+@{
     Layout = "_Layout";
 }
+<table>
+    <thead>
+        <tr>
+            <td>Student Id</td>
+            <td>Last Name</td>
+            <td>First Name</td>
+            <td>Course</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.ID</td>
+                <td>@student.LastName</td>
+                <td>@student.FirstName</td>
+                <td>@student.CourseDepartment @student.CourseNumber</td>
+            </tr>
 
-
+        }
+    </tbody>
+</table>

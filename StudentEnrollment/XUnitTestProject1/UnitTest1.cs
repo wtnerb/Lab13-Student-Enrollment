@@ -18,15 +18,8 @@ namespace XUnitTestProject1
         [Fact]
         public void CanCreateStudent()
         {
-            Student s = new Student() { LastName = "Scott", FirstName = "Was Here", Enrolled = 5 };
-            Assert.Equal(5, s.Enrolled);
-        }
-
-        [Fact]
-        public void CanCreateStudentView()
-        {
-            StudentViewModel s = new StudentViewModel() { LastName = "Scott", FirstName = "Was Here", Enrolled = "Teaching Python" };
-            Assert.Equal("Teaching Python", s.Enrolled);
+            Student s = new Student() { LastName = "Scott", FirstName = "Was Here", Enrolled = 4 };
+            Assert.Equal(4, s.Enrolled);
         }
     }
 }
