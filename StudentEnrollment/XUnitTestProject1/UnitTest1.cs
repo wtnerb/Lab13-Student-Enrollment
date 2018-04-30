@@ -52,71 +52,73 @@ namespace XUnitTestProject1
             }
         }
 
-        //[Fact]
-        //public async Task CanDeleteStudents()
-        //{
-        //    var options = new DbContextOptionsBuilder<StudentContext>()
-        //        .UseInMemoryDatabase(databaseName: "testing321")
-        //        .Options;
-        //    using (var context = new StudentContext(options))
-        //    {
-        //        var SController = new StudentController(context);
-        //        await context.SaveChangesAsync();
-        //        var course = await context.Course.FirstOrDefaultAsync(x => x.Department == "CPTS");
-        //        Student s1 = new Student() { LastName = "Scott", FirstName = "Was Here", Enrolled = 12 };
-        //        Student s2 = new Student() { LastName = "Steve", FirstName = "Was Not Here", Enrolled = 12 };
-        //        await context.Student.AddAsync(s1);
-        //        await context.Student.AddAsync(s2);
+        [Fact]
+        public async Task CanDeleteStudents()
+        {
+            var options = new DbContextOptionsBuilder<StudentContext>()
+                .UseInMemoryDatabase(databaseName: "testing321")
+                .Options;
+            using (var context = new StudentContext(options))
+            {
+                var SController = new StudentController(context);
+                await context.SaveChangesAsync();
+                var course = await context.Course.FirstOrDefaultAsync(x => x.Department == "CPTS");
+                Student s1 = new Student() { LastName = "Scott", FirstName = "Was Here", Enrolled = 12 };
+                Student s2 = new Student() { LastName = "Steve", FirstName = "Was Not Here", Enrolled = 12 };
+                await context.Student.AddAsync(s1);
+                await context.Student.AddAsync(s2);
+                await context.SaveChangesAsync();
 
-        //        var list = await context.Student.ToListAsync();
-        //        //Act
-        //        var scott = await context.Student.FirstOrDefaultAsync(x => x.LastName == "Scott");
-        //        SController.Delete(scott.ID);
+                var list = await context.Student.ToListAsync();
+                //Act
+                var scott = await context.Student.FirstOrDefaultAsync(x => x.LastName == "Scott");
+                SController.Delete(scott.ID);
 
-        //        //Assert
-        //        var numStudents = await context.Student.CountAsync();
-        //        Assert.Equal(1, numStudents);
-        //    }
-        //}
+                //Assert
+                var numStudents = await context.Student.CountAsync();
+                Assert.Equal(1, numStudents);
+            }
+        }
 
-        //[Fact]
-        //public async Task CanCreateStudent()
-        //{
-        //    var options = new DbContextOptionsBuilder<StudentContext>()
-        //        .UseInMemoryDatabase(databaseName: "testing321")
-        //        .Options;
-        //    using (var context = new StudentContext(options))
-        //    {
-        //        var SController = new StudentController(context);
-        //        Course c = new Course() { Department = "CPTS", Description = "Awesome", Instructor = "OFallon", Level = 121 };
-        //        await context.Course.AddAsync(c);
-        //        await context.SaveChangesAsync();
-        //        var course = await context.Course.FirstOrDefaultAsync(x => x.Department == "CPTS");
-        //        Student s1 = new Student() { LastName = "Scott", FirstName = "Was Here", Enrolled = course.ID };
-        //        Student s2 = new Student() { LastName = "Steve", FirstName = "Was Not Here", Enrolled = course.ID };
-        //        await context.Student.AddAsync(s1);
-        //        await context.Student.AddAsync(s2);
+        [Fact]
+        public async Task CanCreateStudent()
+        {
+            var options = new DbContextOptionsBuilder<StudentContext>()
+                .UseInMemoryDatabase(databaseName: "testing221")
+                .Options;
+            using (var context = new StudentContext(options))
+            {
+                var SController = new StudentController(context);
+                Course c = new Course() { Department = "CPTS", Description = "Awesome", Instructor = "OFallon", Level = 121 };
+                await context.Course.AddAsync(c);
+                await context.SaveChangesAsync();
+                var course = await context.Course.FirstOrDefaultAsync(x => x.Department == "CPTS");
+                Student s1 = new Student() { LastName = "Scott", FirstName = "Was Here", Enrolled = course.ID };
+                Student s2 = new Student() { LastName = "Steve", FirstName = "Was Not Here", Enrolled = course.ID };
+                await context.Student.AddAsync(s1);
+                await context.Student.AddAsync(s2);
+                await context.SaveChangesAsync();
 
-        //        var num = await context.Student.LongCountAsync();
-        //        Assert.Equal(2, num);
+                var list = await context.Student.ToListAsync();
+                Assert.Equal(2, list.Count);
 
-        //        StudentViewModel newStudent = new StudentViewModel
-        //        {
-        //            FirstName = "Jason",
-        //            LastName = "Bourne",
-        //            CourseDepartment = "CPTS",
-        //            CourseNumber = 121
-        //        };
+                StudentViewModel newStudent = new StudentViewModel
+                {
+                    FirstName = "Jason",
+                    LastName = "Bourne",
+                    CourseDepartment = "CPTS",
+                    CourseNumber = 121
+                };
 
-        //        //Act
-        //        await SController.Create(newStudent);
+                //Act
+                await SController.Create(newStudent);
 
-        //        //Assert
-        //        var numStudents = await context.Student.CountAsync();
-        //        Assert.Equal(3, numStudents);
-        //        var result = await context.Student.SingleOrDefaultAsync(x => x.FirstName == "Jason");
-        //        Assert.NotNull(result);
-        //    }
-        //}
+                //Assert
+                var numStudents = await context.Student.CountAsync();
+                Assert.Equal(3, numStudents);
+                var result = await context.Student.SingleOrDefaultAsync(x => x.FirstName == "Jason");
+                Assert.NotNull(result);
+            }
+        }
     }
 }
