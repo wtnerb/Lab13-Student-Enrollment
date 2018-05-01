@@ -120,5 +120,34 @@ namespace XUnitTestProject1
                 Assert.NotNull(result);
             }
         }
+
+        [Fact]
+        public async Task CanCreateCourseAction()
+        {
+            var options = new DbContextOptionsBuilder<StudentContext>()
+                .UseInMemoryDatabase(databaseName: "testing221")
+                .Options;
+            using (var context = new StudentContext(options))
+            {
+                var CController = new CourseController(context);
+                Course c = new Course()
+                {
+                    Department = "LEAD",
+                    Level = 321,
+                    Instructor = "The Ceasers",
+                    Description = "Leasons on leadership"
+                };
+
+
+                //act
+                await CController.Create(c);
+                Course course = await context.Course.FirstOrDefaultAsync(x => x.Department == "LEAD");
+
+                //Assert
+                Assert.NotNull(course);//exists in db
+                Assert.IsType<Course>(course);//is correct type
+                Assert.NotEqual(0, course.ID);//is automatically assigned an ID
+            }
+        }
     }
 }
