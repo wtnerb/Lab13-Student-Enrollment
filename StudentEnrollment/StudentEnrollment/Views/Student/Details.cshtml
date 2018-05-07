@@ -1,0 +1,27 @@
+﻿@model List<StudentEnrollment.Models.ViewModels.StudentViewModel>
+@{
+    Layout = "_Layout";
+}
+
+@foreach (StudentEnrollment.Models.ViewModels.StudentViewModel student in Model)
+{
+    <ul>
+        <li>
+            @student.LastName
+        </li>
+        <li>
+            @student.FirstName
+        </li>
+        <li>
+            @student.CourseDepartment
+        </li>
+        <li>
+            @student.CourseNumber
+        </li>
+        <li>
+            <a href="~/Student/Delete/@student.ID">
+                Delete
+            </a>
+        </li>
+    </ul>
+}

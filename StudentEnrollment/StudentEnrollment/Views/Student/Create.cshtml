@@ -1,0 +1,24 @@
+﻿@model StudentEnrollment.Models.ViewModels.StudentViewModel
+@{ 
+    Layout = "_Layout";
+}
+
+<form asp-action="Create">
+    <div>
+        <label asp-for="FirstName">First Name</label>
+        <input asp-for="FirstName" type="text" maxlength="30"/>
+    </div>
+    <div>
+        <label asp-for="LastName">Last Name</label>
+        <input asp-for="LastName" type="text" maxlength="45" />
+    </div>
+    <div>
+        <span>Enrolled in</span>
+        <label asp-for="CourseDepartment">Dept</label>
+        <input asp-for="CourseDepartment" type="text"/>
+        <label asp-for="CourseNumber">num</label>
+        <input asp-for="CourseNumber" type="number" max="999", min="100" />
+    </div>
+
+    <input type="submit" value="Finalize new student"/>
+</form>

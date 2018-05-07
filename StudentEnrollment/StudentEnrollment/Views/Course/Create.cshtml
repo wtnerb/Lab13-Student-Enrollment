@@ -1,0 +1,25 @@
+﻿@model StudentEnrollment.Models.Course
+
+@{ 
+    Layout = "_Layout";
+}
+
+<form asp-action="Create">
+    <div>
+        <label asp-for="Department">Department abbreviation</label>
+        <input asp-for="Department" />
+    </div>
+    <div>
+        <label asp-for="Level">Number</label>
+        <input asp-for="Level" type="number" max=999 min=100 />
+    </div>
+    <div>
+        <label asp-for="Instructor">Instructor</label>
+        <input asp-for="Instructor" />
+    </div>
+    <div>
+        <label asp-for="Description">Course description</label>
+        <input asp-for="Description" />
+    </div>
+    <input type="submit" value="Create New Course" />
+</form>

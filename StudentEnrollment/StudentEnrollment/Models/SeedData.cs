@@ -31,7 +31,7 @@ namespace StudentEnrollment.Models
                         Department = "COMD",
                         ID = 3,
                         Level = 642,
-                        Description = "How to be really funny without being (too) crude",
+                        Description = "How to be really funny",
                         Instructor = "extensive practice"
                     }
                     );
